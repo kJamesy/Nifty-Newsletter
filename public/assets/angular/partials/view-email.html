@@ -1,0 +1,58 @@
+<div class="row view-row">
+	<div class="col-sm-12">
+		<h3>{{ email.subject }}</h3>
+	</div>
+</div>
+<div class="row view-row">
+	<div class="col-xs-3 col-sm-2 view-email-label">
+		Sent:
+	</div>
+	<div class="col-xs-8 col-sm-10 view-email-text">
+		{{ email.created_at | dateToISO | date:'niftyDate' }}
+	</div>
+</div>
+<div class="row view-row">
+	<div class="col-xs-3 col-sm-2 view-email-label">
+		From:
+	</div>
+	<div class="col-xs-8 col-sm-10 view-email-text">
+		{{ email.from }}
+	</div>
+</div>
+<div class="row view-row">
+	<div class="col-xs-3 col-sm-2 view-email-label">
+		Reply To:
+	</div>
+	<div class="col-xs-8 col-sm-10 view-email-text">
+		{{ email.reply_to }}
+	</div>
+</div>
+<div class="row view-row">
+	<div class="col-xs-3 col-sm-2 view-email-label">
+		Recipients: <br />
+		<small style="font-size: 9px;">
+			<i class="fa fa-spinner fa-spin"></i> Sending | 
+			<i class="fa fa-envelope-square"></i> Delivered |
+			<i class="fa fa-check-circle text-success"></i> Opened |
+			<i class="fa fa-times-circle text-danger"></i> Failed |
+		</small>
+	</div>
+	<div class="col-xs-8 col-sm-10 view-email-text">
+		<span data-ng-repeat="analytic in email.analytics" data-ng-show="showMe($index)"> 
+			{{ analytic.subscriber.first_name }}
+			{{ analytic.subscriber.last_name }}
+			({{ analytic.subscriber.email }})
+			<span data-ng-if="analytic.status == 'queued'"><i class="fa fa-spinner fa-spin"></i></span><span data-ng-if="analytic.status == 'delivered'"><i class="fa fa-envelope-square"></i></span><span data-ng-if="analytic.status == 'opened'"><i class="fa fa-check-circle text-success"></i></span><span data-ng-if="analytic.status != 'queued' && analytic.status != 'delivered' && analytic.status != 'opened'"><i class="fa fa-times-circle text-danger"></i></span>
+			{{ $last ? '' : ';' }}
+		</span>	
+		<div data-ng-show="showReadMore" style="margin-top:5px">
+			<btn class="btn btn-xs btn-rect btn-default" data-ng-click="showOthers()"> + {{ remaining }} more</btn>	
+		</div>
+	</div>
+</div>	
+<hr />
+<div class="row">
+	<div class="col-sm-12" data-ui-view="">
+		<iframe data-ng-src="{{ email.url }}" style="width: 100%; border:none;" scrolling="no" onload="javascript:resizeIframe(this);"></iframe>
+	</div>
+</div>

@@ -1,0 +1,97 @@
+	<div class="row" data-ng-show="emails[0]" data-ng-cloak="">
+		<div class="col-sm-3">
+			<div class="row">	
+				<div class="col-sm-12">			
+				    <form>              
+			            <div class="form-group">
+			            	<label class="control-label" for="filter">Filter</label>
+		        			<input type="search" data-ng-model="query.subject" id="filter" placeholder="Subject" class="form-control" />   
+			            </div> 
+			            <div class="form-group">
+			                <label class="control-label" for="order">Order</label>
+							<select name="order" data-ng-model="orderParam" id="order" class="form-control">
+								<option value="subject">Subject</option>
+								<option value="user.first_name">User</option>
+								<option value="id">Sent Date</option>
+								<option value="tag.name">Tag</option>
+							</select> 
+			            </div>                        
+				    </form>
+				</div>
+			</div>
+			<div class="row email-list-row">
+				<div class="col-sm-12 scroll-y">
+					<table class="table table-hover">
+						<tbody>
+							<tr data-ng-repeat="email in emails | filter:query | orderBy:orderParam" class="email-row" data-ng-click="showEmail($index)" data-ng-class="active[$index]">
+								<td>
+									<table style="width: 100%">
+										<tr>
+											<td class="email-subject" width="60%">
+												<div class="icon"><i class="fa fa-envelope-o text-info"></i></div>
+												<div class="text">{{ email.subject }}</div>
+											</td>
+											<td class="email-created-at text-right" width="40%">{{ email.created_at | dateToISO | date:'shortDate' }}</td>
+										</tr>
+										<tr>
+											<td class="email-tags" width="99%">
+												<div class="icon"><i class="fa fa-tag text-info"></i></div>
+												<div class="text">{{ email.tag.name }}</div>
+											</td>
+											<td></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>			
+		</div>
+		<div class="col-sm-9 view-area">
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-sm-12 email-menu">
+					<button data-ng-click="forward(menuidx, '<?php echo URL::to('dashboard/emails'); ?>')" class="btn btn-circle btn-metis-5" title="Forward"><i class="fa fa-mail-forward"></i></button>
+					<button data-ng-click="share(menuidx)" class="btn btn-circle btn-metis-2" title="Share Link"><i class="fa fa-share-alt"></i></button>
+					<button data-ng-click="pdf(menuidx, '<?php echo URL::to('dashboard/emails-custom/pdf'); ?>')" class="btn btn-circle btn-metis-6" title="Convert to PDF"><i class="fa fa-file-pdf-o"></i></button>
+					<button data-ng-click="trash(menuidx)" class="btn btn-circle btn-metis-1" title="Trash"><i class="fa fa-trash-o"></i></button>
+					<button data-ng-click="analytics(menuidx)" class="btn btn-circle btn-metis-4" title="Analytics"><i class="fa fa-sliders"></i></button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div data-ui-view="" data-ng-class="slide">
+										
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- Share Email Modal -->
+    <div class="modal fade" id="shareEmailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Share Email</h4>
+                </div>
+                <div class="modal-body">
+                    This is the direct link to the email which you can share with anyone: <br />
+                    <code> {{ link }}</code>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-rect btn-metis-1" data-dismiss="modal">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>  	
+
+	<div class="row" data-ng-show="! emails[0]" data-ng-cloak="">
+		<div class="col-sm-12">
+			<span class="fa-stack fa-lg" style="margin: 25px">
+			  	<i class="fa fa-envelope fa-stack-1x"></i>
+			  	<i class="fa fa-ban fa-stack-2x text-danger"></i>
+			</span>
+		</div>
+	</div>

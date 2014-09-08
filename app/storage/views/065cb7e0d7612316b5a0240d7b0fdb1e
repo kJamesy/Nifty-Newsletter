@@ -1,0 +1,59 @@
+<?php $__env->startSection('title'); ?>Sent Emails <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-css'); ?>
+    <?php echo HTML::style('assets/css/malihu-scrollbar.css'); ?> 
+    <?php echo HTML::style('assets/css/emails.css'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('head-js'); ?>
+    <?php echo HTML::script('assets/angular/lib/angular.js'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-title'); ?> <h3><i class="fa fa-envelope-o"></i> Emails</h3> <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page'); ?>
+    <div data-ng-app="sentEmailsApp" data-ng-controller="EmailsController">
+        <div class="col-lg-12">
+            <div class="box info">
+                <header>
+                    <div class="icons">
+                        <i class="fa fa-flag-o"></i>
+                    </div>
+                    <h5>Sent Emails</h5>
+                    <div class="toolbar">
+                        <a class="btn btn-default btn-sm btn-flat" href="<?php echo URL::to('dashboard/emails/create'); ?>"><span class="fa fa-pencil"></span> New Email</a>
+                    </div>
+                </header>
+            </div><!-- /.box -->
+        </div> 
+        <div class="col-lg-12">
+            <?php include('assets/angular/partials/emails.html'); ?>
+        </div>      
+    </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-js'); ?>  
+    <?php echo HTML::script('assets/js/malihu-scrollbar.min.js'); ?>
+
+    <?php echo HTML::script('assets/angular/lib/angular-ui-router.min.js'); ?>
+
+    <?php echo HTML::script('assets/angular/lib/angular-resource.js'); ?>
+
+    <?php echo HTML::script('assets/angular/lib/angular-sanitize.min.js'); ?>
+
+    <?php echo HTML::script('assets/angular/lib/angular-animate.min.js'); ?>  
+    <?php echo HTML::script('assets/angular/js/ng-google-chart.js'); ?>     
+    <?php echo HTML::script('assets/angular/js/app.js'); ?>
+
+    <?php echo HTML::script('assets/angular/js/controllers.js'); ?>
+
+    <?php echo HTML::script('assets/angular/js/services.js'); ?>
+
+    <?php echo HTML::script('assets/angular/js/filters.js'); ?>
+
+    <?php echo HTML::script('assets/angular/js/angular-locale_en-gb.js'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend._template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

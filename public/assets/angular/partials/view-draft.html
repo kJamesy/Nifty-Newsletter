@@ -1,0 +1,20 @@
+
+<div class="row view-row">
+	<div class="col-sm-12">
+		<h3>{{ draft.subject }}</h3>
+	</div>
+</div>
+<div class="row view-row">
+	<div class="col-xs-3 col-sm-2 view-email-label">
+		Created:
+	</div>
+	<div class="col-xs-8 col-sm-10 view-email-text">
+		{{ draft.created_at | dateToISO | date:'niftyDate' }}
+	</div>
+</div>
+<hr />
+<div class="row">
+	<div class="col-sm-12">
+		<iframe data-ng-src="{{ draft.url }}" style="width: 100%; border:none;" scrolling="no" onload="javascript:resizeIframe(this);"></iframe>
+	</div>
+</div>	

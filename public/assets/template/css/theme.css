@@ -1,0 +1,14 @@
+#top > .navbar {
+	border-top: 3px solid #FF0000;
+}
+
+#top > .navbar .dropdown-menu > li > a:hover,
+#top > .navbar .dropdown-menu > li > a:focus {
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#e05048), to(#d22d23));
+	background-image: -webkit-linear-gradient(top, #e05048, 0%, #d22d23, 100%);
+	background-image: -moz-linear-gradient(top, #e05048 0%, #d22d23 100%);
+	background-image: linear-gradient(to bottom, #e05048 0%, #d22d23 100%);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe05048', endColorstr='#ffd22d23', GradientType=0);
+	color: #000;
+}

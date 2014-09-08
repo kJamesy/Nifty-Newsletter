@@ -1,0 +1,96 @@
+<?php $__env->startSection('title'); ?>New User <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-css'); ?>
+    <style>
+        h5 a, h5 a:visited {
+            color: #FFFFFF;
+        }
+    </style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-title'); ?> <h3><i class="fa fa-group"></i> Users</h3> <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page'); ?>
+    <div class="col-lg-12">
+        <div class="box info">
+            <header>
+                <div class="icons">
+                    <i class="fa fa-flag-o"></i>
+                </div>
+                <h5>New User</h5>
+                <div class="toolbar">
+                    <a class="btn btn-default btn-sm btn-flat disabled" href="<?php echo URL::to('dashboard/users/create'); ?>"><span class="fa fa-pencil"></span> New User</a>
+                </div>                
+            </header>
+        </div><!-- /.box -->
+    </div>
+    <div class="col-md-12">
+        <?php if(Session::has('success')): ?>
+            <div class="alert alert-dismissable alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <?php echo Session::get('success'); ?>
+            </div>
+        <?php endif; ?> 
+
+        <?php echo Form::open( ['url' => 'dashboard/users/store', 'class' => 'form-horizontal', 'role' => 'form'] ); ?>  
+            <div class="col-md-9">                 
+                <div class="form-group <?php echo $errors->first('first_name') ? 'has-error' : ''; ?>">
+                    <?php echo Form::label('first_name', $errors->first('first_name'), ['class' => 'control-label col-sm-2']); ?>
+                    <div class="col-sm-10">
+                        <?php echo Form::text('first_name', Input::old('first_name'), ['id' => 'first_name', 'class' => 'form-control input-lg']); ?>
+                    </div>                    
+                </div> 
+                <div class="form-group <?php echo $errors->first('last_name') ? 'has-error' : ''; ?>">
+                    <?php echo Form::label('last_name', $errors->first('last_name'), ['class' => 'control-label col-sm-2']); ?>
+                    <div class="col-sm-10">
+                        <?php echo Form::text('last_name', Input::old('last_name'), ['id' => 'last_name', 'class' => 'form-control input-lg']); ?>
+                    </div>                    
+                </div>
+                <div class="form-group <?php echo $errors->first('email') ? 'has-error' : ''; ?>">
+                    <?php echo Form::label('email', $errors->first('email'), ['class' => 'control-label col-sm-2']); ?>
+                    <div class="col-sm-10">
+                        <?php echo Form::text('email', Input::old('email'), ['id' => 'email', 'class' => 'form-control input-lg']); ?>
+                    </div>                    
+                </div>  
+                <div class="form-group <?php echo $errors->first('password') ? 'has-error' : ''; ?>">
+                    <?php echo Form::label('password', $errors->first('password'), ['class' => 'control-label col-sm-2']); ?>
+                    <div class="col-sm-10">
+                        <?php echo Form::password('password', ['id' => 'password', 'class' => 'form-control input-lg']); ?>
+                    </div>                    
+                </div>
+                <div class="form-group <?php echo $errors->first('password') ? 'has-error' : ''; ?>">
+                    <?php echo Form::label('password_confirmation', $errors->first('password') ?  $errors->first('password') : 'Password Confirmation', ['class' => 'control-label col-sm-2']); ?>
+                    <div class="col-sm-10">
+                        <?php echo Form::password('password_confirmation', ['id' => 'password_confirmation', 'class' => 'form-control input-lg']); ?>
+                    </div>                    
+                </div> 
+                <div class="form-group <?php echo $errors->first('role') ? 'has-error' : ''; ?>">
+                    <label class="col-sm-2 control-label"><?php echo $errors->first('role') ? $errors->first('role') : 'Role'; ?></label>
+                    <div class="col-sm-10">
+                        <?php foreach( $groups as $group ): ?>
+                            <div class="radio">
+                                <label>
+                                    <?php echo Form::radio('role', $group->id); ?>
+                                    <?php echo $group->name; ?>
+                                </label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>                    
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <p class="form-control-static">
+                            <button type="submit" class="btn btn-metis-5 btn-grad btn-rect btn-lg">Save</button>
+                        </p>
+                    </div>                    
+                </div> 
+            </div>
+        <?php echo Form::close(); ?>   
+    </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-js'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend._template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

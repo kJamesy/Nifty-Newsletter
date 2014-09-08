@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col-sm-12">
+		<a data-ui-sref="view" class="btn btn-sm btn-default btn-line"><i class="fa fa-envelope"></i></a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-6">
+		<div google-chart chart="statusChart" on-ready="readyHandler(chartWrapper)"></div>
+	</div>
+	<div class="col-sm-6">
+		<div google-chart chart="browsersChart" on-ready="readyHandler(chartWrapper)"></div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-6">
+		<div google-chart chart="clicksChart" on-ready="readyHandler(chartWrapper)"></div>		
+	</div>
+	<div class="col-sm-6">
+		<div google-chart chart="countriesChart" on-ready="readyHandler(chartWrapper)"></div>	
+	</div>
+</div>

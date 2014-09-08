@@ -1,0 +1,90 @@
+<?php $__env->startSection('title'); ?>Deleted Emails <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-css'); ?>
+    <style>
+        table {
+            font-size: 13px;
+        }
+        .more-options {
+            /*margin-top: 5px;*/
+        }
+        .visibility {
+            visibility: hidden;
+        }
+        a.red {
+            color: #D54E21;
+        }
+        a:hover {
+            color: #D54E21;
+            text-decoration: none;
+        }
+        .page-options {
+            margin: 10px 0;
+        }
+        .opacity {
+            opacity: 0.3;
+        }
+        .red {
+            background-color: red;
+        }
+
+        .italic {
+            font-style: italic;
+            color: black;
+        }   
+        .email-row {
+            cursor: pointer;
+        } 
+        .email-subject {
+            font-weight: bold;
+        } 
+        .scroll-y {
+            height: 800px;
+            overflow-y: scroll;
+        }       
+        .email-list-row {
+            margin-top: 20px;
+        }   
+        .email-menu .btn {
+            margin-right: 20px;
+        }
+    </style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('head-js'); ?>
+    <?php echo HTML::script('assets/angular/lib/angular.js'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-title'); ?> <h3><i class="fa fa-envelope-o"></i> Emails</h3> <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page'); ?>
+    <div data-ng-app="trashApp" data-ng-controller="TrashController">
+        <div class="col-lg-12">
+            <div class="box info">
+                <header>
+                    <div class="icons">
+                        <i class="fa fa-flag-o"></i>
+                    </div>
+                    <h5>Deleted Emails</h5>
+                    <div class="toolbar">
+                        <a class="btn btn-default btn-sm btn-flat" href="<?php echo URL::to('dashboard/emails/create'); ?>"><span class="fa fa-pencil"></span> New Email</a>
+                    </div>
+                </header>
+            </div><!-- /.box -->
+        </div> 
+        <div class="col-lg-12">
+            <?php include('assets/angular/partials/trash.html'); ?>
+        </div>      
+    </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-js'); ?>  
+    <?php echo HTML::script('assets/angular/lib/angular-ui-router.min.js'); ?>
+    <?php echo HTML::script('assets/angular/lib/angular-resource.js'); ?>
+    <?php echo HTML::script('assets/angular/lib/angular-sanitize.min.js'); ?>
+    <?php echo HTML::script('assets/angular/lib/angular-animate.min.js'); ?>    
+    <?php echo HTML::script('assets/angular/js/app.js'); ?>
+    <?php echo HTML::script('assets/angular/js/controllers.js'); ?>
+    <?php echo HTML::script('assets/angular/js/services.js'); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend._template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

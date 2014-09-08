@@ -1,0 +1,33 @@
+<?php $__env->startSection('title'); ?>Dashboard <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-css'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-title'); ?> <h3><i class="fa fa-dashboard"></i> Dashboard</h3> <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page'); ?>
+    <div class="col-lg-12">
+        <div class="box info">
+            <header>
+                <div class="icons">
+                    <i class="fa fa-flag-o"></i>
+                </div>
+                <h5>Dashboard</h5>
+            </header>
+        </div><!-- /.box -->
+    </div>
+    <div class="text-center">
+        <h3>Stats...</h3>
+    </div>
+    <hr>
+    <div class="text-center">
+
+    </div>
+    <hr />    
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-js'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend._template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

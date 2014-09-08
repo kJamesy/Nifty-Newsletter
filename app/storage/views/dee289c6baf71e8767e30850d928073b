@@ -1,0 +1,48 @@
+<?php $__env->startSection('title'); ?>New Page <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-css'); ?>
+    <?php echo HTML::style('assets/select2-3.4.5/select2.css'); ?>
+    <?php echo HTML::style('assets/select2-3.4.5/select2-bootstrap.css'); ?>
+    <style>
+        h5 a, h5 a:visited {
+            color: #FFFFFF;
+        }    
+    </style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-title'); ?> <h3><i class="fa fa-folder-open"></i> Pages</h3> <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page'); ?>
+    <div class="col-lg-12">
+        <div class="box info">
+            <header>
+                <div class="icons">
+                    <i class="fa fa-flag-o"></i>
+                </div>
+                <h5>New Page</h5>
+                <div class="toolbar">
+                    <a class="btn btn-default btn-sm btn-flat disabled" href="<?php echo URL::to('dashboard/pages/create'); ?>"><span class="fa fa-pencil"></span> New Page</a>
+                </div>                
+            </header>
+        </div><!-- /.box -->
+    </div>
+    <div class="col-md-12">
+        <?php echo Form::open(['url' => 'dashboard/pages/create', 'class' => 'form-horizontal']); ?>  
+            <?php echo $__env->make('backend.partials.page-form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php echo Form::close(); ?>  
+
+    </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-js'); ?>
+    <?php echo HTML::script('assets/select2-3.4.5/select2.min.js'); ?>
+    <script>
+        jQuery(document).ready(function($) {
+            $("#anchors").select2({
+                tags:['Type in your anchors separated by a space or comma'],
+                tokenSeparators: [",", " "]
+            });
+        });        
+    </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend._template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

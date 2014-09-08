@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="Configure new site" name="description">
+        <meta content="James Ilaki" name="author">
+        <link href="<?php echo asset('favicon.png'); ?>" rel="shortcut icon">
+        <title>Nifty::<?php echo $__env->yieldContent('title'); ?> </title>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+        <?php echo HTML::style('assets/jasny-bootstrap/css/jasny-bootstrap.css'); ?>
+        <?php echo $__env->yieldContent('page-css'); ?>
+        <!--[if lt IE 9]>
+            <?php echo HTML::script('assets/bootstrap/js/html5shiv.js'); ?>
+            <?php echo HTML::script('assets/bootstrap/js/respond.min.js'); ?>
+        <![endif]-->
+        <?php echo HTML::script('assets/js/jQuery-1.10.2.min.js'); ?>
+        <?php echo $__env->yieldContent('head-js'); ?>
+    </head>
+    <body>
+        <?php echo $__env->yieldContent('page'); ?>
+
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <?php echo HTML::script('assets/jasny-bootstrap/js/jasny-bootstrap.min.js'); ?>
+        <?php echo $__env->yieldContent('page-js'); ?>
+    </body>
+</html>

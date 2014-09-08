@@ -1,0 +1,21 @@
+body 
+{
+	padding-top: 50px;
+	padding-bottom: 20px;
+} 
+
+.showlogin
+{
+	color: #999999;
+	cursor: pointer;
+}
+
+.showlogin:hover
+{
+	color: #FFFFFF;
+}
+
+.login-alert
+{
+	margin-top: 20px;
+}

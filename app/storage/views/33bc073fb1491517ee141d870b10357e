@@ -1,0 +1,97 @@
+<?php $__env->startSection('title'); ?>Your Profile <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-css'); ?>
+    <style>
+        h5 a, h5 a:visited {
+            color: #FFFFFF;
+        }
+    </style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-title'); ?> <h3><i class="fa fa-group"></i> Users</h3> <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page'); ?>
+    <div class="col-lg-12">
+        <div class="box info">
+            <header>
+                <div class="icons">
+                    <i class="fa fa-flag-o"></i>
+                </div>
+                <h5>Your Profile</h5>
+                <div class="toolbar">
+                    <a class="btn btn-default btn-sm btn-flat" href="<?php echo URL::to('dashboard/users/profile/password'); ?>"><span class="fa fa-lock"></span> Password</a>
+                </div>                
+            </header>
+        </div><!-- /.box -->
+    </div>
+    <div class="col-md-12">
+        <?php if(Session::has('success')): ?>
+            <div class="alert alert-dismissable alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <?php echo Session::get('success'); ?>
+            </div>
+        <?php endif; ?> 
+
+        <?php echo Form::model($user, ['url' => 'dashboard/users/profile', 'class' => 'form-horizontal', 'role' => 'form']); ?>  
+            <div class="col-md-9">                 
+                <div class="form-group <?php echo $errors->first('first_name') ? 'has-error' : ''; ?>">
+                    <?php echo Form::label('first_name', $errors->first('first_name'), ['class' => 'control-label col-sm-2']); ?>
+                    <div class="col-sm-10">
+                        <?php echo Form::text('first_name', Input::old('first_name'), ['id' => 'first_name', 'class' => 'form-control input-lg']); ?>
+                        <?php echo Form::hidden('id'); ?>
+                    </div>                    
+                </div> 
+                <div class="form-group <?php echo $errors->first('last_name') ? 'has-error' : ''; ?>">
+                    <?php echo Form::label('last_name', $errors->first('last_name'), ['class' => 'control-label col-sm-2']); ?>
+                    <div class="col-sm-10">
+                        <?php echo Form::text('last_name', Input::old('last_name'), ['id' => 'last_name', 'class' => 'form-control input-lg']); ?>
+                    </div>                    
+                </div>
+                <div class="form-group <?php echo $errors->first('email') ? 'has-error' : ''; ?>">
+                    <?php echo Form::label('email', $errors->first('email'), ['class' => 'control-label col-sm-2']); ?>
+                    <div class="col-sm-10">
+                        <?php echo Form::text('email', Input::old('email'), ['id' => 'email', 'class' => 'form-control input-lg']); ?>
+                    </div>                    
+                </div>  
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Role</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">
+                            <?php foreach( $roles as $role ): ?>
+                                <?php echo $role->name; ?> 
+                            <?php endforeach; ?>
+                        </p>
+                    </div>                    
+                </div>                 
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">User Since</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">
+                            <abbr title='<?php echo $userCreatedAt; ?>'><?php echo $userSince; ?></abbr>
+                        </p>
+                    </div>                    
+                </div> 
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Logged-in Since</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">
+                            <abbr title='<?php echo $loggedInAt; ?>'><?php echo $logged_in_for; ?></abbr>
+                        </p>
+                    </div>                    
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <p class="form-control-static">
+                            <button type="submit" class="btn btn-metis-5 btn-grad btn-rect btn-lg">Save</button>
+                        </p>
+                    </div>                    
+                </div> 
+            </div>
+        <?php echo Form::close(); ?>   
+    </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-js'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend._template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

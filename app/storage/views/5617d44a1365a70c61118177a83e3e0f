@@ -1,0 +1,88 @@
+<?php $__env->startSection('title'); ?><?php echo $page->title; ?> <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-css'); ?>
+	<?php echo HTML::style('assets/css/care.css'); ?>
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('page'); ?>
+
+    <div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm">
+		<div class="page-title"><?php echo Str::upper($page->title); ?></div>
+
+		<div class="page-subtitle">ARTICLES</div>
+
+      	<ul class="nav navmenu-nav">
+      		<?php echo $anchorsHtml; ?>
+      	</ul>
+
+		<?php if( Str::length( $previousHtml) ): ?>
+      		<div class="previous-newsletters">
+      			<div class="page-subtitle">PREVIOUS NEWSLETTERS</div>
+      			<ul class="nav navmenu-nav">
+			 		<?php echo $previousHtml; ?>
+			 	</ul>
+      		</div>
+      	<?php endif; ?>
+
+      	<div class="social-media">
+			<a href="#"><img src="<?php echo asset('assets/images/SM_facebook.png'); ?>" alt="Facebook" /></a>
+			<a href="#"><img src="<?php echo asset('assets/images/SM_twitter.png'); ?>" alt="Twitter" /></a>
+			<a href="#"><img src="<?php echo asset('assets/images/SM_youtube.png'); ?>" alt="Youtube" /></a>
+      	</div>
+    </div>
+
+    <div class="navbar navbar-default navbar-fixed-top"> <!-- hidden-md hidden-lg -->
+      	<button type="button" class="navbar-toggle hidden-md hidden-lg" data-toggle="offcanvas" data-target=".navmenu">
+        	<span class="icon-bar"></span>
+        	<span class="icon-bar"></span>
+        	<span class="icon-bar"></span>
+      	</button>
+      	<img class="care-logo" src="<?php echo asset('assets/images/care_logo.png'); ?>" alt="CARE International">
+    </div>
+
+    <div class="container care-container">
+      	<?php echo $page->content; ?>
+	         
+    </div><!-- /.container -->
+ 
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-js'); ?>  
+    <script>
+        jQuery(document).ready(function($) {
+        	$('a').each(function() {
+				if(typeof $(this).attr('name') === 'undefined') {}
+				else { $(this).addClass('anchored'); }
+        	});
+
+        	$('a.anchor').each(function() {
+        		if ( $(this).attr('href') == location.hash ) {
+        			$(this).parent().addClass('active');
+        			return false;
+        		}
+        	})
+
+		  	$('a[href*=#]:not([href=#])').click(function() {
+		    	if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+		      		var target = $(this.hash);
+		      		var $this = $(this);
+
+		      		target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+		      		if (target.length) {
+		       			$('html,body').stop().animate({
+		          			scrollTop: target.offset().top
+		        		}, 1200, function() {
+           					location.hash = target.selector;
+		      				$this.parent().siblings().removeClass('active');
+		      				$this.parent().addClass('active');           					
+		        		});
+
+		        		return false;
+		      		}
+		    	}
+		  	});
+        });
+    </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend._template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

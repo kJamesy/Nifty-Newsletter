@@ -1,0 +1,75 @@
+	<div class="row" data-ng-show="drafts[0]" data-ng-cloak="">
+		<div class="col-sm-3">
+			<div class="row">	
+				<div class="col-sm-12">
+				    <form >              
+			            <div class="form-group">
+			            	<label class="control-label" for="filter">Filter</label>
+		        			<input type="search" data-ng-model="query.subject" id="filter" placeholder="Subject" class="form-control" />   
+			            </div> 
+			            <div class="form-group">
+			                <label class="control-label" for="order">Order</label>
+							<select name="order" data-ng-model="orderParam" id="order" class="form-control">
+								<option value="subject">Subject</option>
+								<option value="user.first_name">User</option>
+								<option value="id">Sent Date</option>
+								<option value="tag.name">Tag</option>
+							</select> 
+			            </div>                        
+				    </form>				
+				</div>
+			</div>
+			<div class="row email-list-row">
+				<div class="col-sm-12 scroll-y">
+					<table class="table table-hover">
+						<tbody>
+							<tr data-ng-repeat="draft in drafts | filter:query | orderBy:orderParam" class="email-row" data-ng-click="show($index)" data-ng-class="active[$index]">
+								<td>								
+									<table style="width: 100%">
+										<tr>
+											<td class="email-subject" width="60%">
+												<div class="icon"><i class="fa fa-envelope-o text-info"></i></div>
+												<div class="text">{{ draft.subject }}</div>
+											</td>										
+											<td class="email-created-at text-right" width="40%">{{ draft.created_at | dateToISO | date:'shortDate' }}</td>
+										</tr>
+										<tr>
+											<td class="email-tags" width="99%">
+												<div class="icon"><i class="fa fa-tag text-info"></i></div>
+												<div class="text">{{ draft.tag.name }}</div>
+											</td>											
+											<td></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>			
+		</div>
+		<div class="col-sm-9 view-area">
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-sm-12 email-menu">
+					<button data-ng-click="edit(menuidx, '<?php echo URL::to('dashboard/emails/drafts'); ?>')" class="btn btn-circle btn-metis-5" title="Edit"><i class="fa fa-pencil"></i></button>
+					<button data-ng-click="destroy(menuidx)" class="btn btn-circle btn-metis-1" title="Destroy"><i class="fa fa-trash-o"></i></button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div data-ui-view="" data-ng-class="slide">
+				
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+
+	<div class="row" data-ng-show="! drafts[0]" data-ng-cloak="">
+		<div class="col-sm-12">
+			<span class="fa-stack fa-lg" style="margin: 25px">
+			  	<i class="fa fa-envelope fa-stack-1x"></i>
+			  	<i class="fa fa-ban fa-stack-2x text-danger"></i>
+			</span>
+		</div>
+	</div>

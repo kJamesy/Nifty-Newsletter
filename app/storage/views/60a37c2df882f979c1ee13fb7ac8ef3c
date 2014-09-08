@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="Configure new site" name="description">
+        <meta content="James Ilaki" name="author">
+        <link href="<?php echo asset('favicon.png'); ?>" rel="shortcut icon">
+        <title>Nifty::<?php echo $__env->yieldContent('title'); ?> </title>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+        <?php echo HTML::style('assets/template/css/main.css'); ?>
+        <?php echo HTML::style('assets/template/css/theme.css'); ?>
+        <?php echo $__env->yieldContent('page-css'); ?>
+        <!--[if lt IE 9]>
+            <?php echo HTML::script('assets/bootstrap/js/html5shiv.js'); ?>
+            <?php echo HTML::script('assets/bootstrap/js/respond.min.js'); ?>
+        <![endif]-->
+        <?php echo HTML::script('assets/js/jQuery-1.10.2.min.js'); ?>
+        <?php echo $__env->yieldContent('head-js'); ?>
+    </head>
+    <body class="padTop53">
+        <div id="wrap">
+            <div id="top">
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <header class="navbar-header">
+                            <span class="sr-only">Toggle navigation</span> 
+                            <span class="icon-bar"></span> 
+                            <span class="icon-bar"></span> 
+                            <span class="icon-bar"></span> 
+                        </button> -->
+                        <a href="<?php echo URL::to('/'); ?>" class="navbar-brand">
+                            <img src="<?php echo asset('assets/template/img/logo.png'); ?>" alt="Nifty">
+                        </a> 
+                    </header>
+                    <div class="topnav">
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <a data-toggle="modal" data-original-title="Settings" data-placement="bottom" class="btn btn-info btn-sm btn-grad" href="#settingsModal">
+                                    <i class="fa fa-cogs"></i>
+                                </a> 
+                            </div>
+                            <div class="btn-group">
+                                <a href="<?php echo URL::to('dashboard/logout'); ?>" data-toggle="tooltip" data-original-title="Logout" data-placement="bottom" class="btn btn-danger btn-sm btn-grad">
+                                    <i class="fa fa-power-off"></i>
+                                </a> 
+                            </div>
+                        </div>
+                    </div><!-- /.topnav -->
+                </nav><!-- /.navbar -->
+
+                <header class="head">
+                    <div class="search-bar" style="margin-top: 5px; overflow:hidden">
+                        <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip" class="accordion-toggle btn btn-primary btn-sm visible-xs" data-toggle="collapse" href="#menu" id="menu-toggle">
+                            <i class="fa fa-expand"></i>
+                        </a> 
+                    </div>
+                    <div class="main-bar">
+                        <?php echo $__env->yieldContent('page-title'); ?>
+                    </div><!-- /.main-bar -->
+                </header>
+            </div><!-- /#top -->
+            <div id="left">
+                <?php echo $__env->make('backend.partials.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            </div><!-- /#left -->
+            <div id="main-content">
+                <div class="outer">
+                    <div class="inner">
+                        <?php echo $__env->yieldContent('page'); ?>
+                    </div><!-- end .inner -->
+                </div> <!-- end .outer --> 
+            </div> <!-- end #main-content -->
+        </div><!-- /#wrap -->
+        <div id="footer">
+            <p><a href="http://acw.uk.com" target="_blank"> <?php echo date('Y'); ?> &copy;ACW</a></p>
+        </div>
+
+        <!-- #helpModal -->
+        <div id="settingsModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Settings</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Settings
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal --><!-- /#helpModal -->
+
+        <?php echo HTML::script('assets/bootstrap/js/bootstrap.min.js'); ?>
+
+        <?php echo HTML::script('assets/template/js/main.min.js'); ?>
+        <?php echo HTML::script('assets/js/main.js'); ?>
+
+        <?php echo $__env->yieldContent('page-js'); ?>
+    </body>
+</html>

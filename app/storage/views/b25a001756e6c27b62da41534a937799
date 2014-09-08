@@ -1,0 +1,31 @@
+           
+<div class="col-md-9">                 
+    <div class="form-group <?php echo $errors->first('title') ? 'has-error' : ''; ?>">
+        <?php echo Form::label('title', $errors->first('title'), ['class' => 'control-label']); ?>
+        <?php echo Form::text('title', Input::old('title'), ['id' => 'title', 'class' => 'form-control']); ?>
+    </div>
+    <div class="form-group <?php echo $errors->first('anchors') ? 'has-error' : ''; ?>">
+        <?php echo Form::label('anchors', $errors->first('anchors'), ['class' => 'control-label']); ?>
+        <?php echo Form::textarea('anchors', Input::old('anchors'), ['id' => 'anchors', 'class' => 'form-control', 'rows' => '3']); ?>
+    </div>     
+    <div class="form-group <?php echo $errors->first('content') ? 'has-error' : ''; ?>">
+        <?php echo Form::label('content', $errors->first('content'), ['class' => 'control-label']); ?>
+        <?php echo Form::textarea('content', Input::old('content'), ['id' => 'content', 'class' => 'form-control', 'rows' => '3']); ?>
+    </div>  
+</div>
+<div class="col-md-12">
+    <div class="form-group">
+        <button type="submit" class="btn btn-metis-5 btn-grad btn-rect btn-lg">Save</button>
+    </div>
+</div>
+<?php echo HTML::script('assets/ckfinder2.4/ckfinder.js'); ?>
+<?php echo HTML::script('assets/ckeditor4.4.3/ckeditor.js'); ?>
+<script>
+    var editor = CKEDITOR.replace('content', 
+        {
+            // width: 600,
+            // height: 450
+        });
+
+    CKFinder.setupCKEditor(editor, '<?php echo asset("assets/ckfinder2.4"); ?>');
+</script>

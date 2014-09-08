@@ -1,0 +1,126 @@
+table {
+    font-size: 13px;
+}
+
+.more-options {
+    /*margin-top: 5px;*/
+}
+
+.visibility {
+    visibility: hidden;
+}
+
+a.red {
+    color: #D54E21;
+}
+
+a:hover {
+    color: #D54E21;
+    text-decoration: none;
+}
+
+.page-options {
+    margin: 10px 0;
+}
+
+.opacity {
+    opacity: 0.3;
+}
+
+.red {
+    background-color: red;
+}
+
+.italic {
+    font-style: italic;
+    color: black;
+} 
+
+.view-area {
+	border-left: 3px double #EEEEEE;
+	border-top: 3px double #EEEEEE;
+}
+
+.email-row {
+    cursor: pointer;
+} 
+
+.email-subject {
+    font-weight: bold;
+} 
+
+.scroll-y {
+    max-height: 600px;
+    color: #666;
+    /*overflow-y: scroll;*/
+}   
+
+.mCustomScrollBox {
+	border-left: 3px double #EEEEEE;
+}
+
+.email-list-row {
+    margin-top: 20px;
+}  
+
+.email-subject div {
+	float: left;
+}
+
+.email-subject .icon, .email-tags .icon {
+	width: 5%;
+	font-size: 12px;
+}
+
+.email-subject .text, .email-tags .text {
+	width: 95%;
+	padding: 0 6px 0 3px;
+	font-size: 12px;
+}
+
+.email-tags div {
+	float: left;
+}
+
+
+@media (min-device-width : 768px) and (max-device-width : 1700px) {
+    .email-subject .icon, .email-tags .icon {
+        width: 20%;
+        /*font-size: 12px;*/
+    }
+
+    .email-subject .text, .email-tags .text {
+        width: 80%;
+        /*padding: 0 6px 0 3px;*/
+        /*font-size: 12px;*/
+    }    
+}
+
+.success .email-subject .text, .success .email-tags .text, .success .email-created-at {
+	font-weight: bold;
+}
+
+.email-menu .btn {
+    margin-right: 20px;
+}
+
+@media (max-device-width : 410px) {
+    .email-menu .btn {
+        margin-right: 2px;
+    }
+}
+
+.view-row {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	color: #666;
+}
+
+.view-email-label {
+	text-align: right;
+	font-weight: bold;
+}
+
+.view-email-text {
+	font-size: 12px;
+}
