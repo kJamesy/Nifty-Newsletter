@@ -1,12 +1,12 @@
 Nifty Newsletter
 =========
 
-Just a *nifty* Laravel Newsletter Application. Demonstration: coming soon.
+A *nifty* Laravel Newsletter Application. [Demonstration] [demo] ``` demo@email-newsletterinfo / D3mopass!```
 
 
 Pre-requisite
 -----------
-  - [Mailgun account] [mailgun] 
+  - [Mailgun] [mailgun] 
 
 
 Features
