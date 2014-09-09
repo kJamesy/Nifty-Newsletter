@@ -194,10 +194,7 @@ class UserController extends BaseController {
 
 			if ( $theUser->removeGroup( $currentGroup ) ) {
 				$theUser->addGroup($group);	
-			}	
-
-			Cache::forget('frontendCategories');
-			Cache::forget('frontendLatestPosts');			
+			}				
 		    
 			return Redirect::back()->withSuccess('User updated.');
 		}	
@@ -291,10 +288,7 @@ class UserController extends BaseController {
 				$theUser->last_name = $lastName;
 				$theUser->email = $email;
 				$theUser->save();
-			}
-
-			Cache::forget('frontendCategories');
-			Cache::forget('frontendLatestPosts');			
+			}			
 
 			return Redirect::back()->withSuccess('Profile updated.');
 		}		
