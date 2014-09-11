@@ -1,7 +1,7 @@
 Nifty Newsletter
 =========
 
-A *nifty* Laravel Newsletter Application. [Demonstration] [demo] ``` demo@email-newsletterinfo / D3mopass!```
+A *nifty* Laravel Newsletter Application. [Demonstration] [demo] ``` demo@email-newsletter.info / D3mopass!```
 
 
 Pre-requisite
