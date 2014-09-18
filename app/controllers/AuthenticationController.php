@@ -112,9 +112,7 @@ class AuthenticationController extends BaseController {
 
 			$id = $this->hashids->decrypt($hashedId)[0];	
 		    $user = Sentry::findUserById($id);
-		    $resetCode = $user->getResetPasswordCode();
-		    $user = Sentry::findUserById(1);
-		    $resetCode = $user->getResetPasswordCode();		    
+		    $resetCode = $user->getResetPasswordCode();	    
 		    $new_password = Str::random(10);
 
 	        if ($user->attemptResetPassword($resetCode, $new_password))
